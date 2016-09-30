@@ -240,7 +240,8 @@ func extractOrEmbedImage(image *C.VipsImage, o Options) (*C.VipsImage, error) {
 		break
 	case o.Embed:
 		left, top := (o.Width-inWidth)/2, (o.Height-inHeight)/2
-		image, err = vipsEmbed(image, left, top, o.Width, o.Height, o.Extend)
+		//tipsytopsy Changed o.Extend to 4 (4 is color for white)
+		image, err = vipsEmbed(image, left, top, o.Width, o.Height, 4)
 		break
 	case o.Top != 0 || o.Left != 0:
 		if o.AreaWidth == 0 {
